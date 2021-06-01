@@ -1,16 +1,12 @@
 from django.shortcuts import render
+from mainapp.models import Product
 
-def index(request):
+def index(request, pk=None):
     title = 'geekshop'
+    products = Product.objects.all()[:4]
 
-    links_product = [
-        {'href': 'index', 'url': 'static/img/product-1.jpg'},
-        {'href': 'index', 'url': 'static/img/product-2.jpg'},
-        {'href': 'index', 'url': 'static/img/product-3.jpg'},
-        {'href': 'index', 'url': 'static/img/product-4.jpg'},
-    ]
     context = {
-        'links_product': links_product,
+        'products': products,
         'title': title,
     }
 
