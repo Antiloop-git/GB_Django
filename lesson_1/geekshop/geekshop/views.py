@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from mainapp.models import Product
 
-def index(request, pk=None):
+def index(request):
     title = 'geekshop'
     products = Product.objects.all()[:4]
 
