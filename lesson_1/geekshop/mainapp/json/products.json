@@ -1,0 +1,46 @@
+[
+  {
+      "category": 1,
+      "name": "����",
+      "image": "product_images/product-4_cudAt7c.jpg",
+      "short_description": "��������",
+      "description": "",
+      "price": "100.00",
+      "quantity": 1,
+      "created": "2021-05-30T14:34:27.504",
+      "updated": "2021-05-30T16:52:25.726"
+  },
+  {
+      "category": 1,
+      "name": "������ �����",
+      "image": "product_images/product-21.jpg",
+      "short_description": "�������",
+      "description": "� ���� �����",
+      "price": "40.00",
+      "quantity": 10,
+      "created": "2021-05-30T14:39:25.507",
+      "updated": "2021-05-30T16:52:02.398"
+  },
+  {
+      "category": 2,
+      "name": "����� �� �����",
+      "image": "product_images/product-41.jpg",
+      "short_description": "��������� �����",
+      "description": "��������� �����",
+      "price": "60.00",
+      "quantity": 20,
+      "created": "2021-05-30T14:41:57.872",
+      "updated": "2021-05-30T16:51:49.879"
+  },
+  {
+      "category": 2,
+      "name": "����� �������",
+      "image": "product_images/product-3-sm.jpg",
+      "short_description": "�������",
+      "description": "������� ��������",
+      "price": "300.00",
+      "quantity": 500,
+      "created": "2021-05-30T14:43:17.542",
+      "updated": "2021-05-30T16:51:35.457"
+  }
+]
