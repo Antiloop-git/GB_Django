@@ -1,25 +1,31 @@
-{% for item in basket_items %}
-    <div class="basket_record">
-        <img src="/media/{{ item.product.image }}"
-             alt="{{ item.product.short_desc }}">
-        <span class="category_name">{{ item.product.category.name }}</span>
-        <span class="product_name">{{ item.product.name }}</span>
-        <span class="product_price">{{ item.product.price }}&nbspруб</span>
-        <input type="number" name="{{ item.pk }}" min="0"
-                             value="{{ item.quantity }}">
-        <span class="product_cost">{{ item.cost }}&nbspруб</span>
-        <button class="btn btn-round">
-            <a href="{% url 'basket:remove' item.pk %}" class="">
-                удалить
-            </a>
-        </button>
-    </div>
-{% endfor %}
+<div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Продукт</th>
+          <th scope="col">Количество</th>
+          <th scope="col">Удалить</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in basket %}
+          <tr>
+              <th scope="row">{{ forloop.counter }}</th>
+              <td>{{ item.product }}</td>
+              <td><input type="number" name="{{ item.pk }}" min="0" value="{{ item.quantity }}"></td>
+              <td><a href="{% url 'basket:remove' item.pk %}">x</a></td>
+          </tr>
+        {% endfor %}
 
-{% if basket_items %}
-    <div class="basket_summary">
-        В корзине {{ basket_items.0.total_quantity }} товаров общей стоимостью
-        {{ basket_items.0.total_cost }} руб
-    </div>
-{% endif %}
-
+      </tbody>
+    </table>
+</div>
+<div class="row">
+    {% if basket %}
+        <div class="basket_summary">
+            В карзине {{ basket.0.total_quantity }} товаров общей стоимостью
+                    {{ basket.0.total_cost }} руб.
+         </div>
+    {% endif %}
+</div>
