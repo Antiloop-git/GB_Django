@@ -1,21 +1,31 @@
 {% extends 'base.html' %}
-
 {% load static %}
 
-{% include 'includes/inc_main_menu.html' %}
+{% block style %}
+	<link rel="stylesheet" type="text/css" href="{% static '/mainapp/style.css' %}">
+{% endblock %}
 
 {% block content %}
-		<div class="hero-white">
-            {% include 'includes/inc_main_menu.html' %}
-		</div>
-
-		<div class="details">
-
-			<div class="links clearfix">
-                {% include 'inc_categories_menu.html' %}
-			</div>
+	{% include 'includes/inc_main_menu.html' %}
 
 	<div class="details">
+
+		<div class="links clearfix">
+			<ul class="links-menu">
+				  <li>
+					<a href="{% url 'products:products' 0 %}" class="{% if not request.resolver_match.kwargs.pk %} active {% endif %}">
+						все
+					</a>
+				  </li>
+				{% for link in links_menu %}
+					<li>
+						<a href="{% url 'products:products' pk=link.pk %}" {% if request.resolver_match.kwargs.pk == link.pk %} class="active" {% endif %}>
+							{{link.name}}
+						</a>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
 
 		<div class="details-products">
 			<div class="details-slider">
@@ -60,17 +70,6 @@
 			{% endif %}
 		</div>
 
-		<div class="paginator">
-          {% if products.has_previous %}
-            <a href="{% url 'products:page' category.pk products.previous_page_number %}"> < </a>
-          {% endif %}
-          <span class="current">страница {{ products.number }} из {{ products.paginator.num_pages }}</span>
-          {% if products.has_next %}
-            <a href="{% url 'products:page' category.pk products.next_page_number %}"> > </a>
-          {% endif %}
-        </div>
-
-
 		<div class="products_category">
 			{% for product in products %}
 				<div class="block w-25 my-3 mx-3">
@@ -85,6 +84,7 @@
 				</div>
 			{% endfor %}
 		</div>
+
 		<div class="related">
 			<div class="title clearfix">
 				<h2>Похожие продукты</h2>
@@ -103,7 +103,8 @@
 			</div>
 		</div>
 
+
 	</div>
-
-
 {% endblock %}
+
+

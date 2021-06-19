@@ -4,29 +4,29 @@
 {% block content %}
   <div class="categories_list">
     <button class="new_category">
-      <a href={% url 'adminapp:category_create' %}>
+      <a href={% url 'admin_staff:category_create' %}>
         новая категория
       </a>
     </button>
 
     {% for object in objects %}
-      <div class="category_record">
+      <div class="category_record" style="{% if not object.is_active %} opacity: 0.5; {% endif %}">
         <div class="category_name">
           {{ object.name|title }}
         </div>
         <div class="category_actions">
           <button>
-            <a href={% url 'adminapp:products' object.pk %}>
+            <a href={% url 'admin_staff:products' object.pk %}>
               товары категории
             </a>
           </button>
           <button>
-            <a href={% url 'adminapp:category_update' object.pk %}>
+            <a href={% url 'admin_staff:category_update' object.pk %}>
               редактировать
             </a>
           </button>
           <button>
-            <a href={% url 'adminapp:category_delete' object.pk %}>
+            <a href={% url 'admin_staff:category_delete' object.pk %}>
               удалить
             </a>
           </button>
@@ -37,15 +37,4 @@
       </div>
     {% endfor%}
   </div>
-
-{% for object in objects %}
-    <div class="category_record
-        {% if not object.is_active %}
-            not_active
-        {% endif %}">
-    <div class="category_name">
-    {{ object.name|title }}
-    </div>
-
 {% endblock %}
-

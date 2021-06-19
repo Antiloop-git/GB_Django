@@ -4,6 +4,8 @@ from basketapp.models import Basket
 from .models import Product, ProductCategory
 import random
 
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 
 def get_basket(user):
     if user.is_authenticated:
@@ -24,7 +26,7 @@ def get_same_products(hot_product):
     return same_products
 
 
-def products(request, pk=None):
+def products(request, pk=None, page=1):
     title = 'каталог/продукты'
     links_menu = ProductCategory.objects.all()
 
@@ -39,6 +41,14 @@ def products(request, pk=None):
         else:
             category = get_object_or_404(ProductCategory, pk=pk)
             products = Product.objects.filter(category__pk=pk).order_by('price')
+
+        paginator = Paginator(products, 2)
+        try:
+            products_paginator = paginator.page(page)
+        except PageNotAnInteger:
+            products_paginator = paginator.page(1)
+        except EmptyPage:
+            products_paginator = paginator.page(paginator.num_pages)
 
         context = {
             'products': products,
