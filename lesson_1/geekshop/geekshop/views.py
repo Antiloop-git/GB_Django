@@ -3,6 +3,7 @@ from django.shortcuts import render
 from basketapp.models import Basket
 from mainapp.models import Product
 
+
 def index(request):
     basket = []
     if request.user.is_authenticated:
@@ -13,16 +14,12 @@ def index(request):
 
     context = {
         'products': products,
+        'some_name': 'hello',
         'title': title,
         'basket': basket,
     }
-
     return render(request, 'index.html', context=context)
 
-def contact(request):
-    title = 'Контакты'
 
-    context = {
-        'title': title,
-    }
-    return render(request, 'contact.html', context=context)
+def contacts(request):
+    return render(request, 'contact.html')
