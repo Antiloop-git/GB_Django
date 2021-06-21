@@ -1,0 +1,16 @@
+{% extends 'adminapp/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="w-50 ml-3">
+  {{ object.name}}
+  {{ object.description}}
+  {{ object.price}}
+
+  <button class="btn btn-round form-control last">
+    <a href="{% url 'admin_staff:products' object.pk %}">
+      к следующему товару
+    </a>
+  </button>
+</div>
+{% endblock %}

@@ -5,6 +5,9 @@ class ProductCategory(models.Model):
     description = models.TextField(verbose_name='описание', blank=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+    is_active = models.BooleanField(verbose_name='активна', default=True)
+    is_delete = models.BooleanField(verbose_name='удалена', default=False)
+
 
     def __str__(self):
         return f'{self.name} - {self.id} : {self.created}'
@@ -24,6 +27,9 @@ class Product(models.Model):
     quantity = models.PositiveIntegerField(verbose_name='количество продукта', default=0)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+    is_active = models.BooleanField(verbose_name='активна', default=True)
+    is_delete = models.BooleanField(verbose_name='удалена', default=False)
+
 
     def __str__(self):
         return f'{self.name} - {self.id} : {self.created}'
