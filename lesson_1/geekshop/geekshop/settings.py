@@ -163,9 +163,6 @@ LOGOUT_REDIRECT_URL = '/'
 # EMAIL_USE_SSL = False
 
 
-# python manage.py sendtestemail dparfenenkov@gmail.com
-
-# DEFAULT_FROM_EMAIL = 'dparfenenkov@gmail.com'
 DEFAULT_FROM_EMAIL = env('EMAIL_GMAIL')
 
 DOMAIN_NAME = 'http://localhost:8000'
