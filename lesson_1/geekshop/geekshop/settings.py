@@ -1,3 +1,4 @@
+from envparse import env
 """
 Django settings for geekshop project.
 
@@ -20,7 +21,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-yr8tzrrg06=#r+j$p6%rw48jrpafkc&%9szdp+ys4y&uv-h(ww'
+SECRET_KEY = env('SECRET_KEY')
+# SECRET_KEY = 'django-insecure-yr8tzrrg06=#r+j$p6%rw48jrpafkc&%9szdp+ys4y&uv-h(ww'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -70,6 +72,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
+                'mainapp.context_processors.product',
             ],
         },
     },
@@ -148,3 +151,30 @@ MEDIA_URL = '/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = '/auth/login/'
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
+
+# DOMAIN_NAME = 'http://localhost:8000'
+# EMAIL_HOST_USER = None
+# EMAIL_HOST_PASSWORD = None
+# EMAIL_HOST = 'localhost'
+# EMAIL_PORT = 1025
+# EMAIL_USE_SSL = False
+
+
+DEFAULT_FROM_EMAIL = env('EMAIL_GMAIL')
+
+DOMAIN_NAME = 'http://localhost:8000'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = env('EMAIL_GMAIL')
+# EMAIL_PORT = 587
+EMAIL_PORT = 465
+EMAIL_HOST_PASSWORD = env('EMAIL_PASSWORD')
+EMAIL_USE_SSL = True
+# EMAIL_USE_TLS = True
+
+
+
+

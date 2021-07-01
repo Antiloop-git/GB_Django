@@ -9,6 +9,8 @@ from adminapp import urls as adminapp_urls
 from basketapp import urls as basketapp_urls
 
 
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('admin_staff/', include(adminapp_urls, namespace='admin_staff'), name='admin_staff'),
